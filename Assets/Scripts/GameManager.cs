@@ -4,24 +4,27 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public float roadSegResetPositionY;
-    public float roadSegHeight = 6f;
-    public float roadSpeed = 2f;
+    public float segmentHeight = 6f;
+    public float segmentResetPositionY;
+
+    public static float roadSpeed = 2f;
+    public static int lines = 4;
 
     public float[] roadLinesCentersX = new float[lines];
     public GameObject[] prefabs = new GameObject[lines];
-    
-    public static int lines = 4;
+
+    static GameManager instance;
 
 
     void Update()
     {
-        
+        instance = this;
+        Road.SetGameManager(this);
     }
 
-    public GameObject GetRandomObject()
+    public static GameObject GetRandomObject()
     {
-        var index = Random.Range(0, prefabs.Length);
-        return prefabs[index];
+        var index = Random.Range(0, instance.prefabs.Length);
+        return instance.prefabs[index];
     }
 }

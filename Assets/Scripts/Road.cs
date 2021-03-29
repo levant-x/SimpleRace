@@ -4,66 +4,79 @@ using UnityEngine;
 
 public class Road : MonoBehaviour
 {
-    public GameManager manager;
-    public static int lines = GameManager.lines;
+    static float[] roadLinesCentersX;
+    static float segmentResetPositionY;
+    static float segmentHeight;
 
     static Vector3 startPosition;
-    static bool move = false;
+    static int lines = GameManager.lines;
+    static int initialized = 0;
 
-    GameObject[] objects = new GameObject[lines];
 
+    public static void SetGameManager(GameManager manager)
+    {
+        roadLinesCentersX = manager.roadLinesCentersX;
+        segmentResetPositionY = manager.segmentResetPositionY;
+        segmentHeight = manager.segmentHeight;
+    }
+    
 
     void Start()
     {
+        initialized++;
         if (gameObject.name != "road (2)") return;
         startPosition = transform.position;
-        move = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (!move) return;
-        transform.position += Vector3.down * Time.deltaTime * 
-            manager.roadSpeed;
-        if (transform.position.y > manager.roadSegResetPositionY)
-            return;
+        if (initialized < 3) return;
+        transform.position += Vector3.down * Time.deltaTime * GameManager.roadSpeed;
+        if (transform.position.y > segmentResetPositionY) return;
         ResetThis();        
     }
+
 
     private void ResetThis()
     {
         var positinoToResetTo = startPosition + transform.position -
-            new Vector3(0, manager.roadSegResetPositionY);
+            new Vector3(0, segmentResetPositionY);
         transform.position = positinoToResetTo;
         SpawnObjects();
     }
 
     private void SpawnObjects()
     {
-        var centers = manager.roadLinesCentersX;
-        for (int i = 0; i < lines; i++) SpawnObjAtLine(i);
+        int total = Random.Range(0, 5);
+        int needed = total;
+        for (int i = 0; i < lines; i++)
+        {
+            if (needed == 0) break;
+            else if (!SpawnedAtLine(i, needed, total))
+                continue;
+            needed--;
+        }
     }
 
-    private void SpawnObjAtLine(int lineNum)
+    private bool SpawnedAtLine(int lineInd, int needed, int total)
     {
-        Destroy(objects[lineNum]);
-        if (Random.Range(0, 3) == 0) return;
-        var x = manager.roadLinesCentersX[lineNum];
-        objects[lineNum] = CreateObj(x, manager.GetRandomObject());
+        var limit = needed / (float)(lines - lineInd);
+        if (limit < 1 && Random.Range(0, 1f) > limit)
+            return false;
+
+        var x = roadLinesCentersX[lineInd];
+        CreateObj(x, GameManager.GetRandomObject());
+        return true;
     }
 
-    private GameObject CreateObj(float positionX, GameObject obj)
+    private void CreateObj(float positionX, GameObject obj)
     {
-        var roadHeight = manager.roadSegHeight - 1;
+        var roadHeight = segmentHeight - 2;
         var positionY = transform.position.y + roadHeight * 
             (0.5f - Random.Range(0, 1f));
+
         var objPosition = new Vector2(positionX, positionY);
-        var newObj = Instantiate(
-            obj, 
-            objPosition, 
-            Quaternion.identity,
-            transform);
-        return newObj;
+        var newObj = Instantiate(obj, objPosition, Quaternion.identity);
+        if (newObj.tag != "Car") newObj.transform.SetParent(transform);
     }
 }

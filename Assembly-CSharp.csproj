@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{86E70190-4BEE-BD63-BB0A-BDB185B288CA}</ProjectGuid>
+    <ProjectGuid>{B042E133-93AB-F4BE-23C9-C701AB9525B7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Car.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Obstacle.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Road.cs" />
     <Reference Include="UnityEngine">
@@ -595,85 +596,85 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.15f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Runtime">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.PixelPerfect.Editor">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.2D.PixelPerfect.Editor.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.2D.PixelPerfect.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Editor">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Path.Editor">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Triangle.Runtime">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="PsdPlugin">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/PsdPlugin.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/PsdPlugin.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Psdimporter.Editor">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.2D.Psdimporter.Editor.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.2D.Psdimporter.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEngineBridge.001">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Common.Runtime">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.PixelPerfect">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.2D.PixelPerfect.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.2D.PixelPerfect.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Editor">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Common.Editor">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEditorBridge.001">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/Документы/Служебные документы/РБИУ/Работа/SimpleRace/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/Документы/Служебные документы/РБИУ/Временная работа/InfiniteRace/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>
