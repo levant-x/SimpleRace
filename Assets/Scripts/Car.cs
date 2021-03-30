@@ -10,7 +10,7 @@ public class Car : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var speed = GameManager.roadSpeed - moveSpeed;
+        var speed = GameManager.player.speedY - moveSpeed;
         transform.position += Vector3.down * Time.deltaTime * speed;
     }
 }

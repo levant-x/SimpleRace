@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class Road : MonoBehaviour
 {
-    static float[] roadLinesCentersX;
-    static float segmentResetPositionY;
-    static float segmentHeight;
-
+    static GameManager manager;
     static Vector3 startPosition;
     static int lines = GameManager.lines;
     static int initialized = 0;
@@ -15,33 +12,32 @@ public class Road : MonoBehaviour
 
     public static void SetGameManager(GameManager manager)
     {
-        roadLinesCentersX = manager.roadLinesCentersX;
-        segmentResetPositionY = manager.segmentResetPositionY;
-        segmentHeight = manager.segmentHeight;
+        Road.manager = manager;
     }
-    
+
 
     void Start()
     {
-        initialized++;
         if (gameObject.name != "road (2)") return;
         startPosition = transform.position;
     }
 
     void Update()
     {
-        if (initialized < 3) return;
-        transform.position += Vector3.down * Time.deltaTime * GameManager.roadSpeed;
-        if (transform.position.y > segmentResetPositionY) return;
+        if (manager == null) return;
+        var distToCameraY = Camera.main.transform.position.y -
+            transform.position.y;
+        
+        if (distToCameraY <= manager.resetDistanceY)
+            return;
         ResetThis();        
     }
 
 
     private void ResetThis()
     {
-        var positinoToResetTo = startPosition + transform.position -
-            new Vector3(0, segmentResetPositionY);
-        transform.position = positinoToResetTo;
+        transform.position = startPosition + transform.position +
+            Vector3.up * manager.resetDistanceY; ;
         SpawnObjects();
     }
 
@@ -64,14 +60,14 @@ public class Road : MonoBehaviour
         if (limit < 1 && Random.Range(0, 1f) > limit)
             return false;
 
-        var x = roadLinesCentersX[lineInd];
+        var x = manager.roadLinesCentersX[lineInd];
         CreateObj(x, GameManager.GetRandomObject());
         return true;
     }
 
     private void CreateObj(float positionX, GameObject obj)
     {
-        var roadHeight = segmentHeight - 2;
+        var roadHeight = manager.segmentHeight - 2;
         var positionY = transform.position.y + roadHeight * 
             (0.5f - Random.Range(0, 1f));
 

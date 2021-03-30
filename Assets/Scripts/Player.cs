@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public GameManager manager;
     public float steeringSpeed = 0.3f;
+    public float speedX = 3f;
     public float speedY = 0.2f;
 
+    float offsetToCamera = 3f;
     Vector3 acceleration;
+    Camera cam;
     float pi_4 = Mathf.PI / 4;
-    float roadNormalSpeed;
     float rotationRad;
     float dx;
     float dy;
 
 
-    private void Start()
+    void Start()
     {
-        roadNormalSpeed = GameManager.roadSpeed;
+        cam = Camera.main;
+        GameManager.player = this;
     }
 
     void Update()
@@ -28,13 +30,13 @@ public class Player : MonoBehaviour
 
         rotationRad = transform.rotation.eulerAngles.z /
             360 * Mathf.PI * 2f;
-        Debug.Log(rotationRad);
-        var stop = ToManualMoving();
 
-        if (!stop || stop && inputY != 0)
-            transform.Rotate(0, 0, inputSteer * steeringSpeed);
+        Debug.Log(rotationRad);
+        //var stop = ToManualMoving();
+                
+        transform.Rotate(0, 0, inputSteer * steeringSpeed);
         DetectMovement(inputY);
-        Move(stop);
+        Move();
     }
 
 
@@ -50,11 +52,13 @@ public class Player : MonoBehaviour
         acceleration = new Vector3(dx, dy) * speedY * inputY;
     }
 
-    void Move(bool stop)
+    void Move(bool stop = false)
     {
-        transform.position += (new Vector3(GameManager.roadSpeed * dx, 0)
-             + acceleration) * Time.deltaTime;
-        if (stop) GameManager.roadSpeed = 0;
-        else GameManager.roadSpeed = roadNormalSpeed * dy;
+        transform.localPosition += new Vector3(speedY * dx,
+            speedY * dy) * Time.deltaTime;
+        var camPosition = cam.transform.position;
+
+        camPosition.y = transform.position.y + offsetToCamera;
+        cam.transform.position = camPosition;
     }
 }
