@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Car : MonoBehaviour
 {
-    public float moveSpeed = .5f;
+    public float speed = 2f;
 
     
     // Update is called once per frame
     void Update()
     {
-        var speed = GameManager.player.speedY - moveSpeed;
-        transform.position += Vector3.down * Time.deltaTime * speed;
+        transform.position += Vector3.up * Time.deltaTime * speed;
     }
 }
