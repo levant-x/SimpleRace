@@ -10,12 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3580789299673360344}
   - component: {fileID: 7028378796391970540}
-  - component: {fileID: 3031080584855459971}
   - component: {fileID: 325257171949086884}
-  - component: {fileID: 5507380970014514953}
+  - component: {fileID: 7648514682746804036}
   m_Layer: 0
   m_Name: fuel
-  m_TagString: Untagged
+  m_TagString: Bonus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,18 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3031080584855459971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2721662911957116508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a344704e2fa7bb94f9a565ea5366f6e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &325257171949086884
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -112,22 +99,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!95 &5507380970014514953
-Animator:
-  serializedVersion: 3
+--- !u!114 &7648514682746804036
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2721662911957116508}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c38daee7d0c821e438013b7cf0b47f45, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5941f54c59c452f44a94d19027749eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropFrequency: 2
+  points: 30
+  toSpin: 1
+  spinRateDeg: 270
+  chargeAmount: 5

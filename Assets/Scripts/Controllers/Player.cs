@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public CollisionManager collisionManager;
+
     public float steeringSpeed = 0.3f;
     public float gasBrakeSpeed = 1f;
     public float speedX = 3f;
     public float speedY = 0.2f;
+    public bool lost = false;
 
+    Rigidbody2D rBody;
     Vector3 acceleration;
     Camera cam;
-    float offsetToCamera = 3f;
     const float pi_4 = Mathf.PI / 4;
+    float offsetToCamera = 3f;
     float rotationRad;
     float dx;
     float dy;
@@ -21,11 +25,13 @@ public class Player : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
-        GameManager.player = this;
+        rBody = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
+        if (lost) return;
+
         var inputSteer = -Input.GetAxis("Horizontal");
         var inputY = Input.GetAxis("Vertical");
 
@@ -34,10 +40,19 @@ public class Player : MonoBehaviour
 
         if (!HeadingForward())
             transform.Rotate(0, 0, -inputSteer * steeringSpeed);
-
         CalcRotation();
         CalcMovement(inputY);
         Move();
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        collisionManager.HandleCollision(collider);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        collisionManager.HandleCollision(collision.collider);
     }
 
 
@@ -62,8 +77,7 @@ public class Player : MonoBehaviour
 
     void Move(bool stop = false)
     {
-        transform.localPosition += (new Vector3(speedY * dx,
-            speedY * dy) + acceleration) * Time.deltaTime;
+        rBody.velocity = (new Vector3(dx, dy) * speedY + acceleration);
 
         var camPosition = cam.transform.position;
         camPosition.y = transform.position.y + offsetToCamera;
