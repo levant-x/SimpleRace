@@ -5,9 +5,10 @@ using UnityEngine;
 public class Bonus : ItemFrequency
 {
     public int points;
-
     public bool toSpin;
     public float spinRateDeg;
+
+    
 
     void Update()
     {

@@ -5,25 +5,17 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public Image tachometer;
-    public Text pointsLabel;
+    public GamePage gamePage;
+
 
 
     public void RedrawUI(Score score)
     {
-        if (score.fuel > score.maxFuel) score.fuel = score.maxFuel;
-        tachometer.fillAmount = score.fuel / (float)score.maxFuel;
-        pointsLabel.text = score.points.ToString();
+        gamePage.RedrawUI(score);
     }
 
     public void StopGame()
     {
-        pointsLabel.text = "Foool";
-    }
 
-
-    void Update()
-    {
-        
     }
 }

@@ -4,45 +4,91 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public Score score;
     public UIManager uiManager;
-    public float segmentHeight = 6f;
-    public float resetDistanceY = -10;
-    public int lines = 4;
-    public float[] roadLinesCentersX;
+    public Player player;
 
-    SpawnManager spawnManager;
-    CollisionManager collisionManager;
-    ProgressManager progressManager;
+    public float effectsDeltaDist = 100;
+    public float fuelConsumptionRate = 2f;
+    public float distancePointsAward = 2f;
 
+    float nextEffectDist;
 
-    public void SpawnObstacles(float spawnCenterY)
+       
+
+    public void HandleCollision(GameObject gameObject)
     {
-        spawnManager.SpawnObjects(spawnCenterY);
+        if (gameObject.tag == "Obstacle") StopGameWithAccident();
+        else if (gameObject.tag == "Bonus") TakeBonus(gameObject);
     }
 
 
-    void Start()
-    {        
-        Road.manager = this;
-        SpawnManager.manager = this;
-        SpawnManager.prefabStorage = GetComponent<PrefabStorage>();
-        progressManager = GetComponent<ProgressManager>();
 
-        spawnManager = new SpawnManager();
-        collisionManager = new CollisionManager();
-
-        var score = new Score(); // load then
-        
-        progressManager.score = collisionManager.score = score;
-        collisionManager.uiManager = uiManager;
-
-        var player = GameObject.Find("player").GetComponent<Player>();
-        player.collisionManager = collisionManager;
-        collisionManager.player = player;
+    private void Start()
+    {
+        nextEffectDist = effectsDeltaDist;
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void Update()
     {
-        Destroy(collision.gameObject);
+        if (player.transform.position.y < nextEffectDist ||
+            player.gameover) return;
+
+        nextEffectDist += effectsDeltaDist;
+        score.DecreaseFuel(fuelConsumptionRate);
+        score.IncreasePoints(distancePointsAward);
+
+        if (score.fuel <= 0) StopGameWithRunOutOfFuel();
+        uiManager.RedrawUI(score);
+    }
+
+
+
+    private void TakeBonus(GameObject gameObject)
+    {
+        var bonus = gameObject.GetComponent<Bonus>();
+        score.points += bonus.points;
+        if (bonus is Fuel fuel) score.fuel += fuel.chargeAmount;
+
+        uiManager.RedrawUI(score);
+        Destroy(gameObject);
+    }
+
+
+
+    private void StopGameWithAccident()
+    {
+        ThrowRotatePlayer();
+        StopGame();
+    }
+
+    private void StopGameWithRunOutOfFuel()
+    {
+        StopPlayer();
+        StopGame();
+    }
+
+
+
+    private void ThrowRotatePlayer()
+    {
+        var playerRb = StopPlayer();
+        var contacts = new ContactPoint2D[1];
+        playerRb.GetContacts(contacts);
+        playerRb.AddForceAtPosition(playerRb.velocity/* * player.shmackForce*/, contacts[0].normal);
+    }
+
+    private Rigidbody2D StopPlayer()
+    {
+        var playerRb = player.GetComponent<Rigidbody2D>();
+        playerRb.AddForce(playerRb.velocity / player.shmackForce);
+        playerRb.drag = 2;
+        return playerRb;
+    }
+
+    private void StopGame()
+    {
+        player.gameover = true;
+        uiManager.StopGame();
     }
 }

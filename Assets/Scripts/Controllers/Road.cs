@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Road : MonoBehaviour
 {
-    public static GameManager manager;
+    public static ScriptsManager manager;
 
     static Vector3 startPosition;
        

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3119510411687991783}
   - component: {fileID: 3119510411687991780}
   - component: {fileID: 3119510411687991781}
-  - component: {fileID: 3119510411687991778}
+  - component: {fileID: -6984504891101775150}
   m_Layer: 0
   m_Name: fuel
   m_TagString: Bonus
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3119510411687991779}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.0550008, y: -2.5206814, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   toSpin: 1
   spinRateDeg: 270
   chargeAmount: 5
---- !u!61 &3119510411687991778
+--- !u!61 &-6984504891101775150
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,12 +117,12 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.68666667, y: 0.8466667}
+    oldSize: {x: 0.34333333, y: 0.42333335}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.68666667, y: 0.8466667}
+  m_Size: {x: 0.34333333, y: 0.42333335}
   m_EdgeRadius: 0

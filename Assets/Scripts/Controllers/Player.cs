@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public CollisionManager collisionManager;
+    public GameManager gameManager;
+    public ScriptsManager manager;
 
     public float steeringSpeed = 0.3f;
     public float gasBrakeSpeed = 1f;
-    public float speedX = 3f;
-    public float speedY = 0.2f;
-    public bool lost = false;
+    public float moveSpeed = 0.2f;
+    public float offsetToCamera = 3f;
+    public float shmackForce = 100;
+    public bool gameover = false;
 
     Rigidbody2D rBody;
     Vector3 acceleration;
     Camera cam;
     const float pi_4 = Mathf.PI / 4;
-    float offsetToCamera = 3f;
     float rotationRad;
     float dx;
     float dy;
+
 
 
     void Start()
@@ -30,7 +32,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (lost) return;
+        if (gameover) return;
 
         var inputSteer = -Input.GetAxis("Horizontal");
         var inputY = Input.GetAxis("Vertical");
@@ -45,16 +47,24 @@ public class Player : MonoBehaviour
         Move();
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        collisionManager.HandleCollision(collider);
+        DispatchCollision(collision);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        collisionManager.HandleCollision(collision.collider);
+        DispatchCollision(collision.collider);
     }
 
+
+
+    private void DispatchCollision(Collider2D collider)
+    {
+        if (gameover) return;
+        var otherObject = collider.gameObject;
+        gameManager.HandleCollision(otherObject);
+    }
 
     void CalcRotation()
     {
@@ -77,7 +87,7 @@ public class Player : MonoBehaviour
 
     void Move(bool stop = false)
     {
-        rBody.velocity = (new Vector3(dx, dy) * speedY + acceleration);
+        rBody.velocity = new Vector3(dx, dy) * moveSpeed + acceleration;
 
         var camPosition = cam.transform.position;
         camPosition.y = transform.position.y + offsetToCamera;

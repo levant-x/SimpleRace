@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SpawnManager 
 {
-    public static GameManager manager;
-    public static PrefabStorage prefabStorage;
+    public static ScriptsManager manager;
+    public PrefabStorage prefabStorage;
     
     float spawnCenterY;
     int[] clearLines = new int[manager.lines];
