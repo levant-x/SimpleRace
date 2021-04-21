@@ -62,11 +62,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Car.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Obstacle.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\Road.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Bonus.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Car.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Destroyer.cs" />
+    <Compile Include="Assets\Scripts\Controllers\GamePage.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Player.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Road.cs" />
+    <Compile Include="Assets\Scripts\Data\Fuel.cs" />
+    <Compile Include="Assets\Scripts\Data\ItemFrequency.cs" />
+    <Compile Include="Assets\Scripts\Data\PrefabStorage.cs" />
+    <Compile Include="Assets\Scripts\Data\Score.cs" />
+    <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\ScriptsManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\SpawnManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\UIManager.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
