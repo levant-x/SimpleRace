@@ -62,16 +62,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Controllers\Bonus.cs" />
-    <Compile Include="Assets\Scripts\Controllers\Car.cs" />
-    <Compile Include="Assets\Scripts\Controllers\Destroyer.cs" />
-    <Compile Include="Assets\Scripts\Controllers\GamePage.cs" />
-    <Compile Include="Assets\Scripts\Controllers\Player.cs" />
-    <Compile Include="Assets\Scripts\Controllers\Road.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Game\Bonus.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Game\Car.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Game\Destroyer.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Game\Player.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Game\Road.cs" />
+    <Compile Include="Assets\Scripts\Controllers\UI\CopStopPage.cs" />
+    <Compile Include="Assets\Scripts\Controllers\UI\GamePage.cs" />
     <Compile Include="Assets\Scripts\Data\Fuel.cs" />
     <Compile Include="Assets\Scripts\Data\ItemFrequency.cs" />
     <Compile Include="Assets\Scripts\Data\PrefabStorage.cs" />
+    <Compile Include="Assets\Scripts\Data\Record.cs" />
     <Compile Include="Assets\Scripts\Data\Score.cs" />
+    <Compile Include="Assets\Scripts\Managers\DataManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ScriptsManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnManager.cs" />

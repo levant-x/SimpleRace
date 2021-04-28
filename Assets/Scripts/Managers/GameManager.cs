@@ -59,12 +59,12 @@ public class GameManager : MonoBehaviour
     private void StopGameWithAccident()
     {
         ThrowRotatePlayer();
-        StopGame();
+        StopGame(true);
     }
 
     private void StopGameWithRunOutOfFuel()
     {
-        StopPlayer();
+        StopPlayerInertially();
         StopGame();
     }
 
@@ -72,13 +72,13 @@ public class GameManager : MonoBehaviour
 
     private void ThrowRotatePlayer()
     {
-        var playerRb = StopPlayer();
+        var playerRb = StopPlayerInertially();
         var contacts = new ContactPoint2D[1];
         playerRb.GetContacts(contacts);
         playerRb.AddForceAtPosition(playerRb.velocity/* * player.shmackForce*/, contacts[0].normal);
     }
 
-    private Rigidbody2D StopPlayer()
+    private Rigidbody2D StopPlayerInertially()
     {
         var playerRb = player.GetComponent<Rigidbody2D>();
         playerRb.AddForce(playerRb.velocity / player.shmackForce);
@@ -86,9 +86,11 @@ public class GameManager : MonoBehaviour
         return playerRb;
     }
 
-    private void StopGame()
+    private void StopGame(bool toCopStop = false)
     {
         player.gameover = true;
-        uiManager.StopGame();
+        if (!toCopStop) return;
+        var playerRb = player.gameObject.GetComponent<Rigidbody2D>();
+        uiManager.StopGame(playerRb);
     }
 }
