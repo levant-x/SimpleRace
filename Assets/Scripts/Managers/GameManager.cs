@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,11 +20,20 @@ public class GameManager : MonoBehaviour
 
     public void HandleCollision(GameObject gameObject)
     {
-        if (gameObject.tag == "Obstacle") StopGameWithAccident();
-        else if (gameObject.tag == "Bonus") TakeBonus(gameObject);
+        if (gameObject.CompareTag("Obstacle")) StopGameWithAccident();
+        else if (gameObject.CompareTag("Bonus")) TakeBonus(gameObject);
     }
 
-
+    public void OnGameOverSubmit()
+    {
+        DataManager.UpdateRecords(new Record()
+        {
+            Name = uiManager.PlayerName.Trim(),
+            Points = score.points,
+            Distance = (float)Math.Round(player.transform.position.y / 100)
+        });
+        SceneManager.LoadScene("Menu");
+    }
 
     private void Start()
     {
@@ -43,7 +54,6 @@ public class GameManager : MonoBehaviour
     }
 
 
-
     private void TakeBonus(GameObject gameObject)
     {
         var bonus = gameObject.GetComponent<Bonus>();
@@ -53,7 +63,6 @@ public class GameManager : MonoBehaviour
         uiManager.RedrawUI(score);
         Destroy(gameObject);
     }
-
 
 
     private void StopGameWithAccident()
@@ -67,7 +76,6 @@ public class GameManager : MonoBehaviour
         StopPlayerInertially();
         StopGame();
     }
-
 
 
     private void ThrowRotatePlayer()

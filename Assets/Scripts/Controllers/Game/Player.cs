@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public GameManager gameManager;
     public ScriptsManager manager;
 
-    public float steeringSpeed = 0.3f;
+    public float steeringSpeed = 1.2f;
     public float gasBrakeSpeed = 1f;
     public float moveSpeed = 0.2f;
     public float offsetToCamera = 3f;

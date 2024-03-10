@@ -1,20 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public static class DataManager 
 {
-    const string RECORDS_KEY = "records";
+    const string RECORDS_KEY = "RECORDS";
     const int RECORDS_QUANTITY = 10;
-    static Record[] records;
 
 
-    public static Record[] GetRecords()
+    public static void UpdateRecords(Record record)
     {
-        LoadRecords();
-        return records;
+        var data = JsonUtility.ToJson(record);
+        PlayerPrefs.SetString(RECORDS_KEY, data);
     }
-
 
     static void LoadRecords()
     {
@@ -23,12 +22,6 @@ public static class DataManager
     }
 
     static void InitRecords()
-    {
-        records = new Record[RECORDS_QUANTITY];
-        for (int i = 0; i < RECORDS_QUANTITY; i++) records[i] = new Record();
-    }
-
-    static void SaveRecords()
     {
 
     }

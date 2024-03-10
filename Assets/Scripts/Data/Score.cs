@@ -5,7 +5,7 @@ using UnityEngine;
 public class Score 
 {
     public int points;
-    public int fuel = 10;
+    public int fuel = 30;
     public int maxFuel = 100;
     public float distance;
 
